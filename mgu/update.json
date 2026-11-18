@@ -1,8 +1,8 @@
 {
-  "version": "0.9.4",
-  "versionCode": 14,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.4/MGU-0.9.4.apk",
-  "mirror": "https://aka.doubaocdn.com/s/HVbQOZqwoD",
-  "sha256": "c27f668dfa4a915d1fe2b03f2a639741b5d43220d5a112e088bc10067f86e33e",
-  "notes": "v0.9.4：新增「CarPlay 投屏 / 刷写」卡片（第 1 页）——①检测环境（carplay 大小/sha、node、mgu-deploy、cluster-render、cluster_render_client.js 位置，全只读）；②装/查/卸 CarPlay 多点触控（车机上跑上游 agent.js，原版 /usr/bin/carplay 不动，要求稳定供电 ≥13.0V 且原版必须是 3,484,912 B / ddb33e33…）；④装/⑤卸 地图投屏到仪表（carplay-map-cluster 的 capture 镜像，走车机 mgu-deploy check→install，只镜像 CarPlay Dashboard 布局）。手机端只负责传文件、调车机 node、原样回显；哈希校验、电压、systemd 单元校验与回滚全部在车机侧代码里执行。"
+  "version": "0.9.5",
+  "versionCode": 15,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.5/MGU-0.9.5.apk",
+  "mirror": "https://aka.doubaocdn.com/s/UAStIZkWX7",
+  "sha256": "99878c3821969620b60ce81b6370b3bc78f73ef7ef685734a9f734da32c2c420",
+  "notes": "v0.9.5：只修 bug + 重整页面，没加新功能。修掉 15 处真实缺陷：日志 ArrayDeque/SimpleDateFormat 无锁（长任务偶发崩溃）、日志 O(n²) 刷新（越用越卡，改 150ms 节流）、carNeedsSsh 在主线程做 ssh.connect/ENET（NetworkOnMainThreadException）、两条流程可并发抢同一 SSH 诊断口（加 Mutex）、旋转屏幕页签翻倍、setConnected 死代码、查状态把整段 JSON 倒进日志框（改 7 行摘要）、CarPlayTool 临时目录异常路径残留、stage 不看 mkdir 返回码、商店源返回非 JSON 直接崩（整片'加载失败'）、GitHub 匿名 API 60 次/小时配额被打满时只显示'读清单失败'（改成明说配额）、raw.githubusercontent 不可达（加 jsDelivr gh 兜底）、catalog 里 .mgu 条目全被标'不可安装'、下载文件名带 ?raw=true、装包时主线程 copy 十几 MB（ANR 风险）。商店安装改'第几个/共几个'进度 + 装完清车机 /tmp。布局重做为 4 页签（连接/刷写/维护/应用），刷写与 CarPlay 从连接页挪出，统一 Label/Hint/CardButton 样式，日志框 200dp。"
 }
