@@ -1,8 +1,8 @@
 {
-  "version": "0.9.2",
-  "versionCode": 12,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.2/MGU-0.9.2.apk",
-  "mirror": "https://aka.doubaocdn.com/s/d98umOT4NJ",
-  "sha256": "7bb4957f51daedb225f84bcab9657dbd197ef25d2f68f990690f46cf49e40682",
-  "notes": "v0.9.2：下载改为真实百分比进度条（不再是空转圈）；更新卡片显示当前读取的清单地址，方便核对读的是哪一份。功能与 v0.9.1 相同：开 SSH 判据按上游（19 02 0C + ISTEP、故障码 B7F8E5）、主机 IP 四地址逐个探测、装 Store 有 check 预检与装完回读。"
+  "version": "0.9.3",
+  "versionCode": 13,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.3/MGU-0.9.3.apk",
+  "mirror": "https://aka.doubaocdn.com/s/5uXDzsfrvx",
+  "sha256": "018002315c7d511325dc307eee51ce71e6b48704463392b38f8c3b0250504ebf",
+  "notes": "v0.9.3：右上角新增「⋮」菜单（复核 SSH / 修复登录被拒 / 持久化 SSH 开机自启 / 回滚持久化 / 关于）；开 SSH 与刷写末尾都改为用内置 root key 真登录一次（端口开着不等于能进）；修掉刷写后不 enroll 的缺陷——刷完会自动 A6 71→A0 FD 再复核；持久化与写 authorized_keys 用上游同名脚本，不刷写、可回滚。"
 }
