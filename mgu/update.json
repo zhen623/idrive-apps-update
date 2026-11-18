@@ -1,8 +1,8 @@
 {
-  "version": "0.9.3",
-  "versionCode": 13,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.3/MGU-0.9.3.apk",
-  "mirror": "https://aka.doubaocdn.com/s/5uXDzsfrvx",
-  "sha256": "018002315c7d511325dc307eee51ce71e6b48704463392b38f8c3b0250504ebf",
-  "notes": "v0.9.3：右上角新增「⋮」菜单（复核 SSH / 修复登录被拒 / 持久化 SSH 开机自启 / 回滚持久化 / 关于）；开 SSH 与刷写末尾都改为用内置 root key 真登录一次（端口开着不等于能进）；修掉刷写后不 enroll 的缺陷——刷完会自动 A6 71→A0 FD 再复核；持久化与写 authorized_keys 用上游同名脚本，不刷写、可回滚。"
+  "version": "0.9.4",
+  "versionCode": 14,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.4/MGU-0.9.4.apk",
+  "mirror": "https://aka.doubaocdn.com/s/HVbQOZqwoD",
+  "sha256": "c27f668dfa4a915d1fe2b03f2a639741b5d43220d5a112e088bc10067f86e33e",
+  "notes": "v0.9.4：新增「CarPlay 投屏 / 刷写」卡片（第 1 页）——①检测环境（carplay 大小/sha、node、mgu-deploy、cluster-render、cluster_render_client.js 位置，全只读）；②装/查/卸 CarPlay 多点触控（车机上跑上游 agent.js，原版 /usr/bin/carplay 不动，要求稳定供电 ≥13.0V 且原版必须是 3,484,912 B / ddb33e33…）；④装/⑤卸 地图投屏到仪表（carplay-map-cluster 的 capture 镜像，走车机 mgu-deploy check→install，只镜像 CarPlay Dashboard 布局）。手机端只负责传文件、调车机 node、原样回显；哈希校验、电压、systemd 单元校验与回滚全部在车机侧代码里执行。"
 }
