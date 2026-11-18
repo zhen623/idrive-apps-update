@@ -1,0 +1,8 @@
+{
+  "version": "0.9.1",
+  "versionCode": 11,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.1/MGU-0.9.1.apk",
+  "mirror": "https://aka.doubaocdn.com/s/2i5nVfZ3oj",
+  "sha256": "242f45001c8ea75a0137c5265e7369d37810a463f45cea438440ebcd6cf6fb9c",
+  "notes": "v0.9.1：加入自助更新（检查/下载/sha256 校验/调起安装）。功能上：开 SSH 判据按上游改回（19 02 0C + ISTEP、用故障码 B7F8E5 判断是否真的开着）；主机 IP 四个地址逐个探测；装 Store 增加 check 预检、装完 status 回读、日志实时输出。"
+}
