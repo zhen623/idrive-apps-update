@@ -1,6 +1,6 @@
 {
-  "version": "1.9.2",
-  "url": "https://aka.doubaocdn.com/s/ygxUPe6qdo",
-  "sha256": "f3316fdc9c06a8bdeccbf97b3dc96bc49823d005b01dfcd6b52c4c6db478d7d3",
-  "notes": "v1.9.2：修「一直看不到新版本/说明没更新」——清单与更新检查改为先直连原地址（拿到最新），失败才走镜像；GitHub 的 main 分支地址会被 CDN 缓存，镜像可能给 12 小时前的旧内容。"
+  "version": "1.9.3",
+  "url": "https://aka.doubaocdn.com/s/s5FFuIB3vV",
+  "sha256": "147ffb1299414406a53da4c237191cc97dfcc61c5139a69541142143da682d1e",
+  "notes": "v1.9.3：更新检查失败时会列出每条地址的真实结果（超时/证书校验失败/404/解析失败）；支持直接粘 GitHub 网页地址自动转 raw；填错到「源地址」也会明确提示。"
 }
