@@ -1,8 +1,8 @@
 {
-  "version": "0.9.8",
-  "versionCode": 18,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.8/MGU-0.9.8.apk",
-  "mirror": "https://aka.doubaocdn.com/s/Ji6wYnGCP9",
-  "sha256": "c4208f21384b206221088261795030059b8f3a6f22df6d456b8e1b36a0c8c19f",
-  "notes": "v0.9.8：修「自动探测主机」找不到/找到假车机。你那把日志里只有 tun0 10.10.14.1/30（VPN 隧道网卡），却扫出 10.10.14.2 填成了车机 IP —— 代理 fake-ip 会让任意地址 22 端口秒开。改动：①网卡白名单，tun/tap/ppp/rmnet/dummy/clat/ipsec/p2p 全部跳过并在日志里写明跳过原因；②22 必须回 SSH- banner 才算车机（或 6801 真开着），否则候选丢弃；③/16 网段不再因超出 1022 上限而 0 地址 —— 只扫本机 /24，本机在 169.254 时补扫 169.254.0.x 与 169.254.199.x；④ENET 广播能绑 6811 就绑、窗口 1.2s→3s、每 500ms 重发，命中后真去连 22/6801 不再硬编码为开；⑤只有 VPN 时直接提示不白扫；⑥候选按端口分填网关框(6801)或车机IP框(22)。"
+  "version": "0.9.9",
+  "versionCode": 19,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.9/MGU-0.9.9.apk",
+  "mirror": "https://aka.doubaocdn.com/s/z8Uj2zsqe5",
+  "sha256": "bd91083e89037d306f9ccaa15e3c9504e6e7ca2f2c649e003969d81d83f951d4",
+  "notes": "v0.9.9：插路由器网线能探测、插宝马 ENET 线探测不到 —— 根因是 ENET 侧不发 DHCP，手机 USB 以太网拿不到 IPv4，没有 IP 就发不出广播也扫不了段（不是扫描代码问题）。按分层架构新增 core/network（NetworkClassifier + NetEnv 网卡体检/静态IP参数/跳系统以太网设置）、core/discovery（原 NetProbe 搬入改名 DiscoveryEngine）、data/history（HistoryStore 记住上次网关/主机）。探测前先把网卡摊到日志，以太网无 IP 时直接弹窗给参数（IP 169.254.1.10 / 掩码 255.255.0.0 / 网关留空）并一键跳以太网设置页，可复制参数；选中候选后写历史下次预填。刷写/SSH/CAFD/Store 一行未动。另：网关框为空发诊断请求时明说「按占位 169.254.0.2 试，若报已连上却读不到数据则不是你的车机」。"
 }
