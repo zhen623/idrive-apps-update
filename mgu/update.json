@@ -1,8 +1,8 @@
 {
-  "version": "0.9.14",
-  "versionCode": 24,
-  "url": "https://aka.doubaocdn.com/s/dgjoJnHS4V",
-  "mirror": "https://aka.doubaocdn.com/s/dgjoJnHS4V",
-  "sha256": "1000ee315be4b4bb3fa09d1079a0ff42887cf0528da11db7dfc34427623b367",
-  "notes": "v0.9.14：探测提速 + 按钮职责分开。① 先广播：UDP 6811（2.5 秒）一次拿到真网关和 VIN。② 已知地址并发筛端口（各 0.7 秒），只对真开着的做验证；验证窗从 SVK 10 秒换成 2.5 秒 PROBE，单地址最坏 36s→5s。③ 清单按上游补齐 169.254.254.36（README 的 --gateway 默认）排第一。④ 上次成功的网关排最前。⑤「连接」只连 SSH，IP 空不再自己扫描。⑥ 互斥改排队。（注：本次下载地址直指 CDN，sha256 已实测与文件一致）"
+  "version": "0.9.15",
+  "versionCode": 25,
+  "url": "https://aka.doubaocdn.com/s/zDCFQGPl99",
+  "mirror": "https://aka.doubaocdn.com/s/zDCFQGPl99",
+  "sha256": "a939523446bdd7a087dc2437c6d82c0a4f965150c76ade199811e8266b362462",
+  "notes": "v0.9.15：修「下载后校验失败」。① 根因：清单里的下载地址指向 GitHub release 资产，可那个资产并不存在（404 / 返回网页），上一版只要字节大于 0 就当成 APK，去算 sha256 当然对不上。② 新增 looksLikeApk：必须是 ZIP 魔数 PK 03 04 且大于 300KB，网页/错误页直接判不是 APK。③ 任一地址下载不完、不是 APK、或 sha256 不对，都自动换下一个地址，并把每个地址的真实原因写进日志（不会再只丢一句「校验失败」）。④ 服务器给了 Content-Length 就必须收满，否则报「下载不完整 x/y」，不再谎称 sha256 不一致。⑤ 清单下载地址改成实测一致的 CDN（sha256 已下载回算验证）。⑥ 保留 0.9.14 的探测提速与排队。"
 }
