@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "url": "https://aka.doubaocdn.com/s/FpHdLafJsu",
-  "sha256": "f09f92258b42fec76a5ff3dc34a5cf4ea7ee64de1a067e1c56cf9ac75d189334",
-  "notes": "v2.0.0：点图标可看大图（能存相册、重新抓图）；图标按条目录存本地，重开不再空白；没有 README 表格的仓库自动扫描 apps/<id>/app.json 列出小程序（中文名/版本/说明/图标）。"
+  "version": "2.0.1",
+  "url": "https://aka.doubaocdn.com/s/Dr0xDEJRwX",
+  "sha256": "74068fba9215f35f27a7ed9acb83f291b4288496c645c5a2e14be0433a37acae",
+  "notes": "v2.0.1：版本信息不再含糊——副标题和菜单都写「已安装 x」；发现新版不再弹窗，改成列表上方一条细提示「已安装 x → 可更新到 y · 点此下载」，不占屏。"
 }
