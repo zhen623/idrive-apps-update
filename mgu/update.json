@@ -1,8 +1,8 @@
 {
-  "version": "0.9.9",
-  "versionCode": 19,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.9/MGU-0.9.9.apk",
-  "mirror": "https://aka.doubaocdn.com/s/z8Uj2zsqe5",
-  "sha256": "bd91083e89037d306f9ccaa15e3c9504e6e7ca2f2c649e003969d81d83f951d4",
-  "notes": "v0.9.9：插路由器网线能探测、插宝马 ENET 线探测不到 —— 根因是 ENET 侧不发 DHCP，手机 USB 以太网拿不到 IPv4，没有 IP 就发不出广播也扫不了段（不是扫描代码问题）。按分层架构新增 core/network（NetworkClassifier + NetEnv 网卡体检/静态IP参数/跳系统以太网设置）、core/discovery（原 NetProbe 搬入改名 DiscoveryEngine）、data/history（HistoryStore 记住上次网关/主机）。探测前先把网卡摊到日志，以太网无 IP 时直接弹窗给参数（IP 169.254.1.10 / 掩码 255.255.0.0 / 网关留空）并一键跳以太网设置页，可复制参数；选中候选后写历史下次预填。刷写/SSH/CAFD/Store 一行未动。另：网关框为空发诊断请求时明说「按占位 169.254.0.2 试，若报已连上却读不到数据则不是你的车机」。"
+  "version": "0.9.10",
+  "versionCode": 20,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.10/MGU-0.9.10.apk",
+  "mirror": "https://aka.doubaocdn.com/s/2sSoUjm0DS",
+  "sha256": "31954b3299d00bb74a951aff4bffae2b302f199a7c90d7b19e4cf10b22d8a7b9",
+  "notes": "v0.9.10：新增「适配器设置」页（右上角菜单进入），适配器类型 ENET / ICOM 二选一，样式对齐 BimmerCode 那类 App；保存后全 App 所有诊断/刷写/开SSH/Cafd/Store 统一走该目标。ENET 模式实现三步：① 网卡有以太网但没 IP 时先等 24 秒（每3秒复查并把 eth0 有无 169.254.x.x 打进日志），仍无才弹静态 IP 引导；② 先打已知地址 169.254.0.2 / 169.254.199.119 / 169.254.199.118，命中 2 秒出结果（不再盲扫 65534 个地址）；③ 命中后立刻发 22 F1 01 读 SVK，有应答才算链路可用；都不中才退广播+扫段。ICOM 模式不广播不扫段，直连手填 IP:端口（默认 6801，可改 50160）并做同样只读验证；ICOM 自带 Wi-Fi 可在 ENET 拿不到 IP 时绕过该坑。新增 core/adapter/AdapterConfig.kt、AdapterSettingsActivity、activity_adapter.xml；gwAddress()/gwPort() 改为适配器说了算，doAutoDetect 拆 detectIcom/detectEnet，新增 waitForEthIp；Hsfz 日志改「已连上诊断网关」。刷写引擎/CAFD/SSH/Store/CarPlay 一行未动。THOR/MHD（CAN）未做（蓝牙转 CAN 无协议资料，不做假的）。"
 }
