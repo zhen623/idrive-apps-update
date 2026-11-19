@@ -1,8 +1,8 @@
 {
-  "version": "0.9.5",
-  "versionCode": 15,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.5/MGU-0.9.5.apk",
-  "mirror": "https://aka.doubaocdn.com/s/UAStIZkWX7",
-  "sha256": "99878c3821969620b60ce81b6370b3bc78f73ef7ef685734a9f734da32c2c420",
-  "notes": "v0.9.5：只修 bug + 重整页面，没加新功能。修掉 15 处真实缺陷：日志 ArrayDeque/SimpleDateFormat 无锁（长任务偶发崩溃）、日志 O(n²) 刷新（越用越卡，改 150ms 节流）、carNeedsSsh 在主线程做 ssh.connect/ENET（NetworkOnMainThreadException）、两条流程可并发抢同一 SSH 诊断口（加 Mutex）、旋转屏幕页签翻倍、setConnected 死代码、查状态把整段 JSON 倒进日志框（改 7 行摘要）、CarPlayTool 临时目录异常路径残留、stage 不看 mkdir 返回码、商店源返回非 JSON 直接崩（整片'加载失败'）、GitHub 匿名 API 60 次/小时配额被打满时只显示'读清单失败'（改成明说配额）、raw.githubusercontent 不可达（加 jsDelivr gh 兜底）、catalog 里 .mgu 条目全被标'不可安装'、下载文件名带 ?raw=true、装包时主线程 copy 十几 MB（ANR 风险）。商店安装改'第几个/共几个'进度 + 装完清车机 /tmp。布局重做为 4 页签（连接/刷写/维护/应用），刷写与 CarPlay 从连接页挪出，统一 Label/Hint/CardButton 样式，日志框 200dp。"
+  "version": "0.9.6",
+  "versionCode": 16,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.6/MGU-0.9.6.apk",
+  "mirror": "https://aka.doubaocdn.com/s/8fbIkmTk5V",
+  "sha256": "ba530b81ca9f054d6a5dda516f72e3c975db6170267766c576ed752b88c3b07f",
+  "notes": "v0.9.6：按你提的三点改的。①进度能看到 100%：进度条从默认细线改 8dp 蓝色实心 + 底色，每 10% 往日志打一行「⏳ 阶段名 45%」，任务正常收尾先亮 100% 停 1.3 秒再收起（失败才立即隐藏），下载更新包同样走 100%。②页面背景：根布局 #F1F4F9 浅灰底 + 白卡 12dp 圆角浮起，主题由 DayNight 改 Light（原来系统深色模式下是深色按钮配写死白卡的拼贴感），状态栏由纯黑改 #1F6FEB 与页签条连成一片。③刷写与开 SSH 合并：「刷写」页第一张卡就是「SSH 通道（刷写前置）」开启/关闭/测试 SSH，下面紧跟 debug 镜像刷写，形成 开SSH→读车架号→刷写→退出编程 一条流程；「连接」页只留指向说明，不再重复按钮（已核对三个 SSH 按钮在整份布局里各出现 1 次）。其余未动：6 个内置包、CarPlay 10 个上游文件、deploy 脚本、locale、ssh 全套均在，assets 29 条。"
 }
