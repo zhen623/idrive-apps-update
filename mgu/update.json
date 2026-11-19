@@ -1,8 +1,8 @@
 {
-  "version": "0.9.6",
-  "versionCode": 16,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.6/MGU-0.9.6.apk",
-  "mirror": "https://aka.doubaocdn.com/s/8fbIkmTk5V",
-  "sha256": "ba530b81ca9f054d6a5dda516f72e3c975db6170267766c576ed752b88c3b07f",
-  "notes": "v0.9.6：按你提的三点改的。①进度能看到 100%：进度条从默认细线改 8dp 蓝色实心 + 底色，每 10% 往日志打一行「⏳ 阶段名 45%」，任务正常收尾先亮 100% 停 1.3 秒再收起（失败才立即隐藏），下载更新包同样走 100%。②页面背景：根布局 #F1F4F9 浅灰底 + 白卡 12dp 圆角浮起，主题由 DayNight 改 Light（原来系统深色模式下是深色按钮配写死白卡的拼贴感），状态栏由纯黑改 #1F6FEB 与页签条连成一片。③刷写与开 SSH 合并：「刷写」页第一张卡就是「SSH 通道（刷写前置）」开启/关闭/测试 SSH，下面紧跟 debug 镜像刷写，形成 开SSH→读车架号→刷写→退出编程 一条流程；「连接」页只留指向说明，不再重复按钮（已核对三个 SSH 按钮在整份布局里各出现 1 次）。其余未动：6 个内置包、CarPlay 10 个上游文件、deploy 脚本、locale、ssh 全套均在，assets 29 条。"
+  "version": "0.9.7",
+  "versionCode": 17,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.7/MGU-0.9.7.apk",
+  "mirror": "https://aka.doubaocdn.com/s/sXQZ90YHyU",
+  "sha256": "f0e293f59fda7ccaa23858aa8f351b2bf44b1bc049c2b8acb6bffaf3a29dc10f",
+  "notes": "v0.9.7：小程序商店补上「更新/下载/删除」。①列表每行改成真实状态：拿本地索引里记的版本跟源里的版本比，显示 可下载 / 已下载 vX / 可更新 → vY（橙色）/ 只有源码 / 不可安装，不再是一排写死的文案。②每行右边加 ⋯ 按钮（长按同效）弹操作菜单：下载或重新下载覆盖本地包、加/移安装队列、单条立即装、删除本地包（不删车机）、从车机卸载、看详情（id/源版本/类型/地址/本地文件名大小）。③顶部「加载」改「刷新」——重拉一次仓库清单即更新仓库代码，tvCount 显示 内置N · 源M（可装K）· 本地已下X · 可更新Y · 清单时间。④下载成功写进 filesDir/work/index.json（版本/文件名/字节/时间），装完保留本地包。⑤从车机卸载只走车机自己的 /var/opt/mgu-deploy/mgu-deploy.sh uninstall <id> --yes，车上没装 Store 就明确报错拒绝，绝不 rm 目录。说明：车机上到底装没装、装的哪一版，没有可靠查询接口，所以列表不编这个状态；能确认的是卸载动作。"
 }
