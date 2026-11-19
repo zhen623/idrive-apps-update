@@ -1,8 +1,8 @@
 {
-  "version": "0.9.15",
-  "versionCode": 25,
-  "url": "https://aka.doubaocdn.com/s/zDCFQGPl99",
-  "mirror": "https://aka.doubaocdn.com/s/zDCFQGPl99",
-  "sha256": "a939523446bdd7a087dc2437c6d82c0a4f965150c76ade199811e8266b362462",
-  "notes": "v0.9.15：修「下载后校验失败」。① 根因：清单里的下载地址指向 GitHub release 资产，可那个资产并不存在（404 / 返回网页），上一版只要字节大于 0 就当成 APK，去算 sha256 当然对不上。② 新增 looksLikeApk：必须是 ZIP 魔数 PK 03 04 且大于 300KB，网页/错误页直接判不是 APK。③ 任一地址下载不完、不是 APK、或 sha256 不对，都自动换下一个地址，并把每个地址的真实原因写进日志（不会再只丢一句「校验失败」）。④ 服务器给了 Content-Length 就必须收满，否则报「下载不完整 x/y」，不再谎称 sha256 不一致。⑤ 清单下载地址改成实测一致的 CDN（sha256 已下载回算验证）。⑥ 保留 0.9.14 的探测提速与排队。"
+  "version": "0.9.16",
+  "versionCode": 26,
+  "url": "https://aka.doubaocdn.com/s/fCb9R1YynF",
+  "mirror": "https://aka.doubaocdn.com/s/fCb9R1YynF",
+  "sha256": "356e6d439589aaba9015d166d59961d38664c17a3bd26d92b079ed13a3ac0338",
+  "notes": "v0.9.16：地址只留一个来源。① 修“探测填了新 IP、后续诊断还打旧地址”：ICOM 模式下 gwAddress() 原来直读 AdapterConfig.icomHost，无视输入框；现在输入框优先，读到的值立刻回写适配器设置（主界面/设置页/刷写页同一个地址）。② 探测成功时同步写回适配器设置，并在日志打“适配器设置已同步：ICOM · 自动扫描 ·…”。③ 车机 IP 只认 22 17 2A 读出来的或 22 实测开着的，不再把网关地址当车机 IP（上版日志里 192.168.171.201:22 ECONNREFUSED 就是这个原因）。④ 「连接」发现车机 IP 空或等于网关地址时，先发一个只读帧 22 17 2A 要真主机 IP（不扫网段），读不到就明确告诉你去点「开 SSH」。⑤ 探测时车机 IP 拿不到就清空旧值，不再留错的地址。"
 }
