@@ -1,8 +1,8 @@
 {
-  "version": "0.9.17",
-  "versionCode": 27,
-  "url": "https://aka.doubaocdn.com/s/Q8hZFVcjSq",
-  "mirror": "https://aka.doubaocdn.com/s/Q8hZFVcjSq",
-  "sha256": "a76137c5d494f167787b8a0a4a055bceb272858f942de826a9cb04a4928fe1cc",
-  "notes": "v0.9.17：主机 IP 自动识别 + 网关不再弹窗手选。① 22 17 2A 解析容错：原来硬要 62 17 2A 00 + 至少 16 字节，你这台只回 12 字节就直接抛异常；现在前缀 62 17 2A、子索引可有可无、按 4/3/2 个 IPv4 逐级解析，解不出就把原始十六进制打进日志（下次把那一行发我就能精确定位）。② 探测不再弹窗：开 6801 的候选逐个验 22 F1 01，第一个真应答的自动采用，最多验 4 个。③ 车机主机自动认：22 17 2A 没给地址时，从「22 开着且回 SSH banner」的候选里取（同网段优先），扫描时已剔掉“端口通但不是 sshd”的假目标。④ 点「连接」空 IP 时：先读 22 17 2A，读不到就复用上次探测候选 / 扫一次网段找 22，找到自动填入。⑤ 开 SSH 成功后同样会自动扫 22 把主机 IP 填回来。"
+  "version": "0.9.18",
+  "versionCode": 28,
+  "url": "https://aka.doubaocdn.com/s/Kxf9ZDYR1r",
+  "mirror": "https://aka.doubaocdn.com/s/Kxf9ZDYR1r",
+  "sha256": "9c779f28d5956971af1dee0bbb0b52593b2521e4bd9ed9b1c9d00651467e2fe1",
+  "notes": "v0.9.18：移植电脑版 vehicle_identify 的识别思路。① 深度扫描 169.254.0.0/16（电脑版就是扫 /16 才能插线即用）：手机与车机链路本地地址各自随机，常不在同一个 /24，只扫 /24 等于 255/256 概率漏掉主机。新增 scanTcpDeep：64516 地址、160 并发、150ms 超时、分批命中即停、上限 70 秒。② 不再弹窗选地址。③ 扫描没结果时自动跑深度扫描（先 6801 诊断口，后 22 主机）。④ 右上角菜单新增「深度扫描主机（169.254/16，约 1 分钟）」，可手动触发。⑤ 新增 I-Stufe 集成等级读取（22 10 0B，与电脑版同一条）写进「测试」日志。⑥ SSH 连上后从车机文件系统读 VIN（/etc/vin、/var/opt/mgu-deploy/vin、/var/opt/public/oap/.vin、grep mgu-deploy/*.json），读不到不改你手填的值。"
 }
