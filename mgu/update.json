@@ -1,8 +1,8 @@
 {
-  "version": "0.9.7",
-  "versionCode": 17,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.7/MGU-0.9.7.apk",
-  "mirror": "https://aka.doubaocdn.com/s/sXQZ90YHyU",
-  "sha256": "f0e293f59fda7ccaa23858aa8f351b2bf44b1bc049c2b8acb6bffaf3a29dc10f",
-  "notes": "v0.9.7：小程序商店补上「更新/下载/删除」。①列表每行改成真实状态：拿本地索引里记的版本跟源里的版本比，显示 可下载 / 已下载 vX / 可更新 → vY（橙色）/ 只有源码 / 不可安装，不再是一排写死的文案。②每行右边加 ⋯ 按钮（长按同效）弹操作菜单：下载或重新下载覆盖本地包、加/移安装队列、单条立即装、删除本地包（不删车机）、从车机卸载、看详情（id/源版本/类型/地址/本地文件名大小）。③顶部「加载」改「刷新」——重拉一次仓库清单即更新仓库代码，tvCount 显示 内置N · 源M（可装K）· 本地已下X · 可更新Y · 清单时间。④下载成功写进 filesDir/work/index.json（版本/文件名/字节/时间），装完保留本地包。⑤从车机卸载只走车机自己的 /var/opt/mgu-deploy/mgu-deploy.sh uninstall <id> --yes，车上没装 Store 就明确报错拒绝，绝不 rm 目录。说明：车机上到底装没装、装的哪一版，没有可靠查询接口，所以列表不编这个状态；能确认的是卸载动作。"
+  "version": "0.9.8",
+  "versionCode": 18,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.8/MGU-0.9.8.apk",
+  "mirror": "https://aka.doubaocdn.com/s/Ji6wYnGCP9",
+  "sha256": "c4208f21384b206221088261795030059b8f3a6f22df6d456b8e1b36a0c8c19f",
+  "notes": "v0.9.8：修「自动探测主机」找不到/找到假车机。你那把日志里只有 tun0 10.10.14.1/30（VPN 隧道网卡），却扫出 10.10.14.2 填成了车机 IP —— 代理 fake-ip 会让任意地址 22 端口秒开。改动：①网卡白名单，tun/tap/ppp/rmnet/dummy/clat/ipsec/p2p 全部跳过并在日志里写明跳过原因；②22 必须回 SSH- banner 才算车机（或 6801 真开着），否则候选丢弃；③/16 网段不再因超出 1022 上限而 0 地址 —— 只扫本机 /24，本机在 169.254 时补扫 169.254.0.x 与 169.254.199.x；④ENET 广播能绑 6811 就绑、窗口 1.2s→3s、每 500ms 重发，命中后真去连 22/6801 不再硬编码为开；⑤只有 VPN 时直接提示不白扫；⑥候选按端口分填网关框(6801)或车机IP框(22)。"
 }
