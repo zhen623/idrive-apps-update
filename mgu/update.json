@@ -1,8 +1,8 @@
 {
-  "version": "0.9.11",
-  "versionCode": 21,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.11/MGU-0.9.11.apk",
-  "mirror": "https://aka.doubaocdn.com/s/SCRHnNDwFn",
-  "sha256": "fc16b35a071735b9a38695e0983841d88e30eb9b160aaf6f1e457d7f74b5af18",
-  "notes": "v0.9.11：适配器设置页新增「地址来源（自动扫描 / 手动指定）」+「走哪块网卡」下拉（多网口可选，选中后广播与扫段只走该网卡）；ENET 手动模式只打你填的那个网关（1.5s，不通即报错，不发多余包），自动模式先打已知地址再广播扫段；ICOM 新增自动模式（先试设置地址，不通则扫选定网卡找该诊断端口的主机并列出候选），手动模式仍只连一个地址；22 端口不再二选一 —— 扫描时同时测 22 与诊断口，候选行同时标 SSH:22 / DIAG:6801，选中后两个输入框一次性填好，新增 verifyDiagRead / fillBoth / pickHosts，Host 增 diagPort 字段；选定网卡不存在时直接提示「线没插 / 网卡没起来」。刷写/CAFD/SSH/Store/CarPlay 未动。已知局限：Java 无法绑定源网卡，网卡选择作用是限定扫描范围与广播网段，非强制 socket 出口。"
+  "version": "0.9.12",
+  "versionCode": 22,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.12/MGU-0.9.12.apk",
+  "mirror": "https://aka.doubaocdn.com/s/7VoaKZpR6e",
+  "sha256": "c0d3cc5c12a63d2a13f37630d4b9664679e23a6e0c8104bafac72c9183f78ac0",
+  "notes": "v0.9.12：修复三大问题。① 假通：以前端口能连就当命中，ICOM 192.168.171.1:6801 填进去后读 19 02 0C 必超时；现在命中判定必须发 22 F1 01 有应答（真 HSFZ），不是诊断服务就跳过、不填任何框，继续找。② 主机 IP：验证通过后顺手读 22 17 2A，把车机自己的 IP（优先 22 可达）直接填进「车机 IP」框，不再靠「开 SSH」后才拿到。③ 认证：不再强制要求填密码或私钥——默认自动用 App 内置 root 私钥（asset 05，就是刷写时写进 authorized_keys.root 的那把），手填的优先，都没有才用出厂口令 ts&SK412；登录被拒时区分「公钥不对→修复登录被拒」与「软件版本不认 key→改用密码」。新增 probeDiag（验证+读 IP 一步完成）、fillBoth 改为只有验证通过的口才填。"
 }
