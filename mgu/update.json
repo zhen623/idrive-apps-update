@@ -1,8 +1,8 @@
 {
-  "version": "0.9.10",
-  "versionCode": 20,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.10/MGU-0.9.10.apk",
-  "mirror": "https://aka.doubaocdn.com/s/2sSoUjm0DS",
-  "sha256": "31954b3299d00bb74a951aff4bffae2b302f199a7c90d7b19e4cf10b22d8a7b9",
-  "notes": "v0.9.10：新增「适配器设置」页（右上角菜单进入），适配器类型 ENET / ICOM 二选一，样式对齐 BimmerCode 那类 App；保存后全 App 所有诊断/刷写/开SSH/Cafd/Store 统一走该目标。ENET 模式实现三步：① 网卡有以太网但没 IP 时先等 24 秒（每3秒复查并把 eth0 有无 169.254.x.x 打进日志），仍无才弹静态 IP 引导；② 先打已知地址 169.254.0.2 / 169.254.199.119 / 169.254.199.118，命中 2 秒出结果（不再盲扫 65534 个地址）；③ 命中后立刻发 22 F1 01 读 SVK，有应答才算链路可用；都不中才退广播+扫段。ICOM 模式不广播不扫段，直连手填 IP:端口（默认 6801，可改 50160）并做同样只读验证；ICOM 自带 Wi-Fi 可在 ENET 拿不到 IP 时绕过该坑。新增 core/adapter/AdapterConfig.kt、AdapterSettingsActivity、activity_adapter.xml；gwAddress()/gwPort() 改为适配器说了算，doAutoDetect 拆 detectIcom/detectEnet，新增 waitForEthIp；Hsfz 日志改「已连上诊断网关」。刷写引擎/CAFD/SSH/Store/CarPlay 一行未动。THOR/MHD（CAN）未做（蓝牙转 CAN 无协议资料，不做假的）。"
+  "version": "0.9.11",
+  "versionCode": 21,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.11/MGU-0.9.11.apk",
+  "mirror": "https://aka.doubaocdn.com/s/SCRHnNDwFn",
+  "sha256": "fc16b35a071735b9a38695e0983841d88e30eb9b160aaf6f1e457d7f74b5af18",
+  "notes": "v0.9.11：适配器设置页新增「地址来源（自动扫描 / 手动指定）」+「走哪块网卡」下拉（多网口可选，选中后广播与扫段只走该网卡）；ENET 手动模式只打你填的那个网关（1.5s，不通即报错，不发多余包），自动模式先打已知地址再广播扫段；ICOM 新增自动模式（先试设置地址，不通则扫选定网卡找该诊断端口的主机并列出候选），手动模式仍只连一个地址；22 端口不再二选一 —— 扫描时同时测 22 与诊断口，候选行同时标 SSH:22 / DIAG:6801，选中后两个输入框一次性填好，新增 verifyDiagRead / fillBoth / pickHosts，Host 增 diagPort 字段；选定网卡不存在时直接提示「线没插 / 网卡没起来」。刷写/CAFD/SSH/Store/CarPlay 未动。已知局限：Java 无法绑定源网卡，网卡选择作用是限定扫描范围与广播网段，非强制 socket 出口。"
 }
