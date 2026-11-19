@@ -1,8 +1,8 @@
 {
-  "version": "0.9.12",
-  "versionCode": 22,
-  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.12/MGU-0.9.12.apk",
-  "mirror": "https://aka.doubaocdn.com/s/7VoaKZpR6e",
-  "sha256": "c0d3cc5c12a63d2a13f37630d4b9664679e23a6e0c8104bafac72c9183f78ac0",
-  "notes": "v0.9.12：修复三大问题。① 假通：以前端口能连就当命中，ICOM 192.168.171.1:6801 填进去后读 19 02 0C 必超时；现在命中判定必须发 22 F1 01 有应答（真 HSFZ），不是诊断服务就跳过、不填任何框，继续找。② 主机 IP：验证通过后顺手读 22 17 2A，把车机自己的 IP（优先 22 可达）直接填进「车机 IP」框，不再靠「开 SSH」后才拿到。③ 认证：不再强制要求填密码或私钥——默认自动用 App 内置 root 私钥（asset 05，就是刷写时写进 authorized_keys.root 的那把），手填的优先，都没有才用出厂口令 ts&SK412；登录被拒时区分「公钥不对→修复登录被拒」与「软件版本不认 key→改用密码」。新增 probeDiag（验证+读 IP 一步完成）、fillBoth 改为只有验证通过的口才填。"
+  "version": "0.9.13",
+  "versionCode": 23,
+  "url": "https://github.com/zhen623/idrive-apps-update/releases/download/v0.9.13/MGU-0.9.13.apk",
+  "mirror": "https://aka.doubaocdn.com/s/kkG0cEdWg8",
+  "sha256": "1f81f46037e6705d2424262d229194e5e39a4cfc786d8ce882e17577ddb933bd",
+  "notes": "v0.9.13：按 v0.9.12 真机日志修四处。① 目标地址错了：日志里 22 F1 01 发 99(MGU) 石沉大海，而 22 F1 90 双发时 223(GATEWAY) 立刻回 VIN —— 说明这台车的 DID 走网关。现在 readSvl / readMguIp / probeDiag 全部改为 223 先、99 兜底，失败时把两个目标的错误都打出来。② 车机 IP 填错：以前读不到 22 17 2A 时「车机 IP」框留着旧值（192.168.171.1），SSH 连的是旧地址必然 Auth fail；现在探测成功后必定重填，读不到时明确标「暂用网关地址，22 还没验证」。③ 导出身份崩溃：ClassCastException（OpenSSLRSAPrivateKey 不能转 RSAPrivateCrtKey）—— 改成自己拆 PKCS#1 DER，直接取 n/e/d/p/q/dp/dq/qinv，不再依赖接口实现；「修复登录被拒」写 authorized_keys 那条路径同一坑已一并修。④ 探测更宽容：SVK 不回就退到 22 F1 90 读 VIN，能读到就认定网关有效（这版固件不回 SVK 不影响读 IP）。界面：两个地址改成「① 诊断端口\u00b7网关」与「② 主机端口\u00b7车机自己的 IP」，并在跨网段时提示。故障码 19 02 0C 与刷写本轮未动。"
 }
